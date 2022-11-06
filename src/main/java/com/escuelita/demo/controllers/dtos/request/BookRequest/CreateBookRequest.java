@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter @Setter
 public class CreateBookRequest {
-    private Long id;
+
+
     private String tittle;
-    private Long year;
+    private String year;
+
 }

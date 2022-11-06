@@ -19,7 +19,7 @@ public class BookController {
     @Autowired
     private IBookService service;
     @PostMapping
-    public CreateBookResponse create (@RequestBody CreateBookRequest request){
+    public CreateBookResponse create(@RequestBody CreateBookRequest request){
         return service.create(request);
     }
 

@@ -1,3 +1,6 @@
-FROM openjdk:11
-ADD target/demo.jar demo.jar
-ENTRYPOINT ["java", "-jar", "demo.jar"]
+FROM openjdk:16
+ADD target/app.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+

@@ -22,8 +22,8 @@ public class BookServiceImp implements IBookService {
 
     @Override
     public CreateBookResponse create(CreateBookRequest request) {
-        Book save = repository.save(from(request));
-        return from(save);
+        Book book =  from(request);
+        return from(repository.save(book));
     }
 
     @Override
@@ -52,6 +52,13 @@ public class BookServiceImp implements IBookService {
         return toUpdateBookResponse(repository.save(book));
     }
 
+    @Override
+    public void updateBookCover(String bookCoverUrl, Long idBook){
+        Book book = findOneAndEnsureExist(idBook);
+        book.setBookCover(bookCoverUrl);
+        repository.save(book);
+    }
+
     public Book findOneAndEnsureExist(Long id){
         return repository.findById(id)
                 .orElseThrow(()-> new RuntimeException("The book does not exist"));
@@ -65,7 +72,8 @@ public class BookServiceImp implements IBookService {
         return book;
    }
 
-   private CreateBookResponse from(Book book){
+
+    private CreateBookResponse from(Book book){
         CreateBookResponse response = new CreateBookResponse();
         response.setId(book.getId());
         response.setTittle(book.getTittle());

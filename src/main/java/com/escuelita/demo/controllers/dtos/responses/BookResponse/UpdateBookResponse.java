@@ -8,6 +8,6 @@ public class UpdateBookResponse {
 
     private Long id;
     private String tittle;
-    private Long year;
+    private String year;
 
 }

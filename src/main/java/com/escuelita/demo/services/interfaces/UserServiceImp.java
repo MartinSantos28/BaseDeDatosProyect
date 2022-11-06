@@ -5,6 +5,7 @@ import com.escuelita.demo.controllers.dtos.request.UserRequest.UpdateUserRequest
 import com.escuelita.demo.controllers.dtos.responses.UserResponse.CreateUserResponse;
 import com.escuelita.demo.controllers.dtos.responses.UserResponse.GetUserResponse;
 import com.escuelita.demo.controllers.dtos.responses.UserResponse.UpdateUserResponse;
+import com.escuelita.demo.entities.Book;
 import com.escuelita.demo.entities.User;
 import com.escuelita.demo.repository.IUserRepository;
 import com.escuelita.demo.services.interfaces.interfaces.IUserService;
@@ -54,6 +55,7 @@ public class UserServiceImp  implements IUserService {
         repository.delete(findOneAndEnsureExist(id));
     }
 
+
     public User findOneAndEnsureExist(Long id){
         return repository.findById(id)
                 .orElseThrow(()-> new RuntimeException("User Does not Exist"));
@@ -61,7 +63,6 @@ public class UserServiceImp  implements IUserService {
 
     private User from(CreateUserRequest request){
         User user = new User();
-        user.setId(user.getId());
         user.setName(request.getName());
         user.setPassword(request.getPassword());
         return user;
@@ -69,6 +70,7 @@ public class UserServiceImp  implements IUserService {
 
     private CreateUserResponse from(User user){
         CreateUserResponse response= new CreateUserResponse();
+        response.setId(user.getId());
         response.setName(user.getName());
         response.setPassword(user.getPassword());
         return  response;

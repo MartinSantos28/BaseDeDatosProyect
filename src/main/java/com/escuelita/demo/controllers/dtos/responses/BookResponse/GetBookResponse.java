@@ -5,9 +5,10 @@ import lombok.Setter;
 
 @Getter @Setter
 public class GetBookResponse {
+
     private Long id;
     private String tittle;
-    private Long year;
+    private String year;
 
 
 }

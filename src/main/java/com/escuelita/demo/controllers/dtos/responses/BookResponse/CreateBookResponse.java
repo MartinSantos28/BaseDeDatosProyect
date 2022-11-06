@@ -7,5 +7,5 @@ import lombok.Setter;
 public class CreateBookResponse {
     private Long id;
     private String tittle;
-    private Long year;
+    private String year;
 }
